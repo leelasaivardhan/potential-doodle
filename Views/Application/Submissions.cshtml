@@ -1,0 +1,5 @@
+@model IEnumerable<CandidateRegistrationPortal.Models.CandidateApplication>
+<h1>Submitted Applications</h1>
+<table><thead><tr><th>ID</th><th>Gender</th><th>Course</th><th>State</th><th>District</th><th>Submitted</th><th>Hall Ticket</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td>@x.ApplicationId</td><td>@x.Gender</td><td>@x.Course?.Name</td><td>@x.State?.Name</td><td>@x.District?.Name</td><td>@x.SubmittedAt</td><td><a href="/Application/HallTicket/@x.ApplicationId">View</a></td></tr> }
+</tbody></table>

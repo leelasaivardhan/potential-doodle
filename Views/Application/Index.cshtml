@@ -1,0 +1,18 @@
+@model CandidateRegistrationPortal.ViewModels.ApplicationViewModel
+@using CandidateRegistrationPortal.Models
+<h1>Welcome to XYZ</h1>
+<div class="card summary"><p><b>Name:</b> @ViewBag.Name</p><p><b>Mobile:</b> @ViewBag.Mobile</p><p><b>Date of Birth:</b> @ViewBag.DateOfBirth</p></div>
+<form asp-action="Submit" method="post" enctype="multipart/form-data" class="card">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="alert error"></div>
+    <label>Gender</label>
+    <div><label><input type="radio" asp-for="Gender" value="Male" /> Male</label><label><input type="radio" asp-for="Gender" value="Female" /> Female</label><label><input type="radio" asp-for="Gender" value="Other" /> Other</label></div>
+    <label>Course<select asp-for="CourseId"><option value="">Select Course</option>@foreach (CandidateCourse x in ViewBag.Courses) { <option value="@x.CourseId">@x.Name</option> }</select></label>
+    <label>State<select asp-for="StateId" id="state"><option value="">Select State</option>@foreach (CandidateState x in ViewBag.States) { <option value="@x.StateId">@x.Name</option> }</select></label>
+    <label>District<select asp-for="DistrictId" id="district"><option value="">Select District</option></select></label>
+    <label>Photograph<input asp-for="Photograph" type="file" accept=".jpg,.jpeg,.png" /></label>
+    <label>Signature<input asp-for="Signature" type="file" accept=".jpg,.jpeg,.png" /></label>
+    <label>PDF Document<input asp-for="PdfDocument" type="file" accept=".pdf" /></label>
+    <button type="submit">Submit Application</button>
+</form>
+<a class="button" href="/Application/Submissions">View My Submissions</a>

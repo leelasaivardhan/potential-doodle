@@ -1,0 +1,5 @@
+@model IEnumerable<CandidateRegistrationPortal.Models.CandidateLoginAudit>
+<h1>Login Audit Log</h1>
+<table><thead><tr><th>User</th><th>Login</th><th>Logout</th><th>Status</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td>@x.UserName</td><td>@x.LoginDateTime</td><td>@x.LogoutDateTime</td><td>@x.LoginStatus</td></tr> }
+</tbody></table>

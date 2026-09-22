@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewData["Title"] ?? "Candidate Registration Portal")</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="container">
+            <div class="brand">Candidate Portal</div>
+            <nav>
+                <a href="/Account/Login">Login</a>
+                <a href="/Account/Register">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        @if (TempData["Message"] is not null)
+        {
+            <div class="alert success">@TempData["Message"]</div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">Candidate Registration Portal • Demo project</div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

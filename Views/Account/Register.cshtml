@@ -1,0 +1,47 @@
+@model CandidateRegistrationPortal.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="auth-card">
+    <h1>Registration</h1>
+    <p class="auth-subtitle">Create your candidate account.</p>
+
+    <form asp-action="Register" method="post" class="form-stack">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="alert error"></div>
+
+        <div class="form-group">
+            <label for="UserName">User name <span class="required">*</span></label>
+            <input asp-for="UserName" autocomplete="username" />
+            <span asp-validation-for="UserName" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Name <span class="required">*</span></label>
+            <input asp-for="Name" autocomplete="name" />
+            <span asp-validation-for="Name" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Mobile">Mobile Number <span class="required">*</span></label>
+            <input asp-for="Mobile" maxlength="10" inputmode="numeric" autocomplete="tel" />
+            <span asp-validation-for="Mobile" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="DateOfBirth">Date of Birth <span class="required">*</span></label>
+            <input asp-for="DateOfBirth" type="date" />
+            <span asp-validation-for="DateOfBirth" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Captcha">Captcha <span class="required">*</span></label>
+            <div class="captcha-box">@ViewBag.CaptchaQuestion</div>
+            <input asp-for="Captcha" maxlength="3" inputmode="numeric" />
+            <span asp-validation-for="Captcha" class="field-error"></span>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+</section>

@@ -1,0 +1,6 @@
+@model IEnumerable<CandidateRegistrationPortal.Models.CandidateApplication>
+<h1>Admin - Applications</h1>
+<p><a href="/Admin/Documents">PDF Documents</a> | <a href="/Admin/AuditLogs">Login Audit Logs</a></p>
+<table><thead><tr><th>ID</th><th>User</th><th>Name</th><th>Course</th><th>State</th><th>District</th><th>Submitted</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td>@x.ApplicationId</td><td>@x.User?.UserName</td><td>@x.User?.Name</td><td>@x.Course?.Name</td><td>@x.State?.Name</td><td>@x.District?.Name</td><td>@x.SubmittedAt</td></tr> }
+</tbody></table>

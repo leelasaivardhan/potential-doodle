@@ -1,0 +1,17 @@
+@model CandidateRegistrationPortal.Models.CandidateApplication
+<h1>Hall Ticket</h1>
+<div class="hall-ticket">
+    <h2>Candidate Hall Ticket</h2>
+    <p><b>Application No:</b> @Model.ApplicationId</p>
+    <p><b>Name:</b> @Model.User?.Name</p>
+    <p><b>Mobile:</b> **********</p>
+    <p><b>Date of Birth:</b> @Model.User?.DateOfBirth.ToString("dd-MM-yyyy")</p>
+    <p><b>Gender:</b> @Model.Gender</p>
+    <p><b>Course:</b> @Model.Course?.Name</p>
+    <p><b>State:</b> @Model.State?.Name</p>
+    <p><b>District:</b> @Model.District?.Name</p>
+    <p><b>Submitted:</b> @Model.SubmittedAt</p>
+    @if (!string.IsNullOrWhiteSpace(Model.PhotoPath)) { <img src="@Model.PhotoPath" class="ticket-photo" /> }
+    @if (!string.IsNullOrWhiteSpace(Model.SignaturePath)) { <img src="@Model.SignaturePath" class="ticket-sign" /> }
+</div>
+<button onclick="window.print()">Print / Save as PDF</button>

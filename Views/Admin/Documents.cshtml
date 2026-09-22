@@ -1,0 +1,5 @@
+@model IEnumerable<CandidateRegistrationPortal.Models.CandidateApplication>
+<h1>Uploaded PDF Documents</h1>
+<table><thead><tr><th>Application</th><th>User</th><th>PDF</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td>@x.ApplicationId</td><td>@x.User?.UserName</td><td><a href="/Admin/Pdf/@x.ApplicationId" target="_blank">Open PDF</a></td></tr> }
+</tbody></table>
